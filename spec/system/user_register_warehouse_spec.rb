@@ -27,6 +27,7 @@ describe 'Usuário cadastra um galpão' do
     click_on 'Enviar'
 
     expect(current_path).not_to eq new_warehouse_path
+    expect(page).to have_content 'Galpão cadastrado com sucesso!'
     expect(page).to have_content 'Aeroporto SP'
     expect(page).to have_content 'Galpão destinado para cargas internacionais'
     expect(page).to have_content 'GRU'
@@ -34,5 +35,14 @@ describe 'Usuário cadastra um galpão' do
     expect(page).to have_content 'Guarulhos'
     expect(page).to have_content '15000-000'
     expect(page).to have_content '100000m²'
+  end
+
+  it 'e algo deu errado' do
+    visit root_path
+    click_on 'Cadastrar Galpão'
+    click_on 'Enviar'
+
+    expect(current_path).to eq warehouses_path
+    expect(page).to have_content 'Algo deu errado...'
   end
 end
