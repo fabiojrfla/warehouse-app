@@ -1,19 +1,6 @@
 require 'rails_helper'
 
 describe 'Usuário cadastra um galpão' do
-  it 'a partir da tela inicial' do
-    visit root_path
-    click_on 'Cadastrar Galpão'
-
-    expect(page).to have_field 'Nome'
-    expect(page).to have_field 'Descrição'
-    expect(page).to have_field 'Código'
-    expect(page).to have_field 'Endereço'
-    expect(page).to have_field 'Cidade'
-    expect(page).to have_field 'CEP'
-    expect(page).to have_field 'Área'
-  end
-
   it 'com sucesso' do
     visit root_path
     click_on 'Cadastrar Galpão'
@@ -26,7 +13,7 @@ describe 'Usuário cadastra um galpão' do
     fill_in 'Área',	with: '100000'
     click_on 'Enviar'
 
-    expect(current_path).not_to eq new_warehouse_path
+    expect(current_path).to eq warehouse_path(Warehouse.last[:id])
     expect(page).to have_content 'Galpão cadastrado com sucesso!'
     expect(page).to have_content 'Aeroporto SP'
     expect(page).to have_content 'Galpão destinado para cargas internacionais'
@@ -37,12 +24,26 @@ describe 'Usuário cadastra um galpão' do
     expect(page).to have_content '100000m²'
   end
 
-  it 'e algo deu errado' do
+  it 'com dados incompletos' do
     visit root_path
     click_on 'Cadastrar Galpão'
+    fill_in 'Nome',	with: 'Aeroporto SP'
+    fill_in 'Descrição',	with: ''
+    fill_in 'Código',	with: 'GRU'
+    fill_in 'Endereço',	with: ''
+    fill_in 'Cidade',	with: 'Guarulhos'
+    fill_in 'CEP',	with: ''
+    fill_in 'Área',	with: '100000'
     click_on 'Enviar'
 
     expect(current_path).to eq warehouses_path
-    expect(page).to have_content 'Algo deu errado...'
+    expect(page).to have_content 'Dados incompletos...'
+    expect(page).to have_field 'Nome', with: 'Aeroporto SP'
+    expect(page).to have_field 'Descrição', with: ''
+    expect(page).to have_field 'Código', with: 'GRU'
+    expect(page).to have_field 'Endereço', with: ''
+    expect(page).to have_field 'Cidade', with: 'Guarulhos'
+    expect(page).to have_field 'CEP', with: ''
+    expect(page).to have_field 'Área', with: '100000'
   end
 end

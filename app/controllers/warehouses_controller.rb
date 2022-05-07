@@ -15,7 +15,7 @@ class WarehousesController < ApplicationController
       flash[:success] = 'Galpão cadastrado com sucesso!'
       redirect_to @warehouse
     else
-      flash[:error] = 'Algo deu errado...'
+      flash.now[:error] = 'Dados incompletos...'
       render 'new'
     end
   end

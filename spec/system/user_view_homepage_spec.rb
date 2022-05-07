@@ -8,8 +8,12 @@ describe 'Usuário visita tela inicial' do
   end
 
   it 'e vê os galpões cadastrados' do
-    Warehouse.create(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: 60_000)
-    Warehouse.create(name: 'Mossoro', code: 'MVF', city: 'Mossoro', area: 50_000)
+    Warehouse.create(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: 60_000,
+                     address: 'Avenida Atlantica, 50', cep: '20000-000',
+                     description: 'Galpão do Rio')
+    Warehouse.create(name: 'Mossoro', code: 'MVF', city: 'Mossoro', area: 50_000,
+                     address: 'Avenida Felipe Camarão, 100', cep: '59000-000',
+                     description: 'Galpão do oeste potiguar')
 
     visit root_path
 
