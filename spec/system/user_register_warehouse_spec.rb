@@ -15,13 +15,12 @@ describe 'Usuário cadastra um galpão' do
 
     expect(current_path).to eq warehouse_path(Warehouse.last[:id])
     expect(page).to have_content 'Galpão cadastrado com sucesso!'
-    expect(page).to have_content 'Aeroporto SP'
+    expect(page).to have_content 'Nome: Aeroporto SP'
     expect(page).to have_content 'Galpão destinado para cargas internacionais'
-    expect(page).to have_content 'GRU'
-    expect(page).to have_content 'Avenida do Aeroporto, 1000'
-    expect(page).to have_content 'Guarulhos'
-    expect(page).to have_content '15000-000'
-    expect(page).to have_content '100000m²'
+    expect(page).to have_content 'Galpão GRU'
+    expect(page).to have_content 'Endereço: Avenida do Aeroporto, 1000 CEP: 15000-000'
+    expect(page).to have_content 'Cidade: Guarulhos'
+    expect(page).to have_content 'Área: 100000m²'
   end
 
   it 'com dados incompletos' do

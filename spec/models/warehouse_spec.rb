@@ -62,9 +62,9 @@ RSpec.describe Warehouse, type: :model do
 
     context 'uniqueness' do
       it 'falso quando nome já está em uso' do
-        first_warehouse = Warehouse.create(name: 'Aeroporto', code: 'GRU', city: 'Guarulhos', area: 100_000,
-                                           address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
-                                           description: 'Galpão destinado para cargas internacionais')
+        first_warehouse = Warehouse.create!(name: 'Aeroporto', code: 'GRU', city: 'Guarulhos', area: 100_000,
+                                            address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
+                                            description: 'Galpão destinado para cargas internacionais')
 
         second_warehouse = Warehouse.new(name: 'Aeroporto', code: 'SDU', city: 'Rio de Janeiro', area: 60_000,
                                          address: 'Avenida Atlantica, 50', cep: '20000-000',
@@ -74,9 +74,9 @@ RSpec.describe Warehouse, type: :model do
       end
 
       it 'falso quando código já está em uso' do
-        first_warehouse = Warehouse.create(name: 'Aeroporto SP', code: 'AER', city: 'Guarulhos', area: 100_000,
-                                           address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
-                                           description: 'Galpão destinado para cargas internacionais')
+        first_warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'AER', city: 'Guarulhos', area: 100_000,
+                                            address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
+                                            description: 'Galpão destinado para cargas internacionais')
 
         second_warehouse = Warehouse.new(name: 'Aeroporto Rio', code: 'AER', city: 'Rio de Janeiro', area: 60_000,
                                          address: 'Avenida Atlantica, 50', cep: '20000-000',
