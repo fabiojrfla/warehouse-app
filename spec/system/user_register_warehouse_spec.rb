@@ -11,7 +11,7 @@ describe 'Usuário cadastra um galpão' do
     fill_in 'Cidade',	with: 'Guarulhos'
     fill_in 'CEP',	with: '15000-000'
     fill_in 'Área',	with: '100000'
-    click_on 'Enviar'
+    click_on 'Criar Galpão'
 
     expect(current_path).to eq warehouse_path(Warehouse.last[:id])
     expect(page).to have_content 'Galpão cadastrado com sucesso!'
@@ -34,10 +34,20 @@ describe 'Usuário cadastra um galpão' do
     fill_in 'Cidade',	with: 'Guarulhos'
     fill_in 'CEP',	with: ''
     fill_in 'Área',	with: '100000'
-    click_on 'Enviar'
+    click_on 'Criar Galpão'
 
     expect(current_path).to eq warehouses_path
     expect(page).to have_content 'Dados incompletos...'
+    expect(page).to have_content 'Descrição não pode ficar em branco'
+    expect(page).to have_content 'Endereço não pode ficar em branco'
+    expect(page).to have_content 'CEP não pode ficar em branco'
+    expect(page).to have_content 'CEP não é válido'
+
+    expect(page).not_to have_content 'Nome não pode ficar em branco'
+    expect(page).not_to have_content 'Código não pode ficar em branco'
+    expect(page).not_to have_content 'Cidade não pode ficar em branco'
+    expect(page).not_to have_content 'Área não pode ficar em branco'
+
     expect(page).to have_field 'Nome', with: 'Aeroporto SP'
     expect(page).to have_field 'Descrição', with: ''
     expect(page).to have_field 'Código', with: 'GRU'
