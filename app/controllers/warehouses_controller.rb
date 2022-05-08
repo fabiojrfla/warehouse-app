@@ -1,15 +1,14 @@
 class WarehousesController < ApplicationController
-  def show
-    @warehouse = Warehouse.find(params[:id])
-  end
+  before_action :set_warehouse, only: %i[show edit update]
+
+  def show; end
 
   def new
     @warehouse = Warehouse.new
   end
 
   def create
-    attributes = params.require(:warehouse).permit(:name, :description, :code, :address, :city, :cep, :area)
-    @warehouse = Warehouse.new(attributes)
+    @warehouse = Warehouse.new(warehouse_attributes)
 
     if @warehouse.save
       flash[:success] = 'Galpão cadastrado com sucesso!'
@@ -20,20 +19,26 @@ class WarehousesController < ApplicationController
     end
   end
 
-  def edit
-    @warehouse = Warehouse.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @warehouse = Warehouse.find(params[:id])
-    attributes = params.require(:warehouse).permit(:name, :description, :code, :address, :city, :cep, :area)
-
-    if @warehouse.update(attributes)
+    if @warehouse.update(warehouse_attributes)
       flash[:success] = 'Galpão atualizado com sucesso!'
       redirect_to @warehouse
     else
-      flash[:error] = 'Não foi possível atualizar o galpão...'
+      flash.now[:error] = 'Não foi possível atualizar o galpão...'
       render 'edit'
     end
+  end
+
+  private
+
+  def set_warehouse
+    @warehouse = Warehouse.find(params[:id])
+  end
+
+  def warehouse_attributes
+    params.require(:warehouse).permit(:name, :description, :code,
+                                      :address, :city, :cep, :area)
   end
 end
