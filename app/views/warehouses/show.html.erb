@@ -13,5 +13,10 @@
   </dl>
 </div>
 
-<%= link_to 'Editar', edit_warehouse_path(@warehouse) %>
-<%= link_to 'Voltar', root_path %>
+<div>
+  <%= link_to 'Editar', edit_warehouse_path(@warehouse) %>
+  <%= button_to 'Remover Galpão', @warehouse, method: :delete %>
+</div>
+<div>
+  <%= link_to 'Voltar', root_path %>
+</div>
