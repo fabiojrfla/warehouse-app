@@ -9,5 +9,5 @@ pt-BR:
         city: 'Cidade'
         area: 'Área'
         address: 'Endereço'
-        cep: 'CEP'
+        postal_code: 'CEP'
         description: 'Descrição'

@@ -45,6 +45,6 @@ class WarehousesController < ApplicationController
 
   def warehouse_attributes
     params.require(:warehouse).permit(:name, :description, :code,
-                                      :address, :city, :cep, :area)
+                                      :address, :city, :postal_code, :area)
   end
 end

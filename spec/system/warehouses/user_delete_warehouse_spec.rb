@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário remove um galpão' do
   it 'com sucesso' do
     Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
-                      address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
+                      address: 'Avenida do Aeroporto, 1000', postal_code: '15000-000',
                       description: 'Galpão destinado para cargas internacionais')
 
     visit root_path
@@ -18,11 +18,11 @@ describe 'Usuário remove um galpão' do
 
   it 'e não apaga outros galpões' do
     first_warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
-                                        address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
+                                        address: 'Avenida do Aeroporto, 1000', postal_code: '15000-000',
                                         description: 'Galpão destinado para cargas internacionais')
 
     second_warehouse = Warehouse.create!(name: 'Aeroporto RJ', code: 'SDU', city: 'Rio de Janeiro', area: 60_000,
-                                         address: 'Avenida Atlantica, 50', cep: '20000-000',
+                                         address: 'Avenida Atlantica, 50', postal_code: '20000-000',
                                          description: 'Galpão do Rio')
 
     visit root_path
