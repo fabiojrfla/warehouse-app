@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_12_124407) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_12_125315) do
   create_table "suppliers", force: :cascade do |t|
     t.string "corporate_name"
     t.string "brand_name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_124407) do
     t.string "address"
     t.string "postal_code"
     t.string "description"
+    t.string "state", default: "ND"
   end
 
 end

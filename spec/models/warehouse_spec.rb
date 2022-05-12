@@ -112,6 +112,14 @@ RSpec.describe Warehouse, type: :model do
         expect(first_warehouse.valid?).to eq false
         expect(second_warehouse.valid?).to eq false
       end
+
+      it 'falso quando o formato do estado é inválido' do
+        warehouse = Warehouse.new(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
+                                  address: 'Avenida do Aeroporto, 1000', postal_code: '15000-000',
+                                  description: 'Galpão destinado para cargas internacionais', state: '20')
+
+        expect(warehouse.valid?).to eq false
+      end
     end
 
     context 'length' do
@@ -127,6 +135,14 @@ RSpec.describe Warehouse, type: :model do
         warehouse = Warehouse.new(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
                                   address: 'Avenida do Aeroporto, 1000', postal_code: '15000-0001',
                                   description: 'Galpão destinado para cargas internacionais')
+
+        expect(warehouse.valid?).to eq false
+      end
+
+      it 'falso quando o comprimento do CEP é inválido' do
+        warehouse = Warehouse.new(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
+                                  address: 'Avenida do Aeroporto, 1000', postal_code: '15000-000',
+                                  description: 'Galpão destinado para cargas internacionais', state: 'São Paulo')
 
         expect(warehouse.valid?).to eq false
       end

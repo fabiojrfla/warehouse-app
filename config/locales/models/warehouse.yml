@@ -11,3 +11,4 @@ pt-BR:
         address: 'Endereço'
         postal_code: 'CEP'
         description: 'Descrição'
+        state: 'Estado'
