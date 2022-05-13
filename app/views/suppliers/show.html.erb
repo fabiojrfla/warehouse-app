@@ -1,0 +1,19 @@
+<h2>Fornecedor <%= @supplier.brand_name %></h2>
+<h3><%= @supplier.corporate_name %></h3>
+<div>
+  <dl>
+    <dt><strong>CNPJ:</strong></dt>
+    <dd><%= @supplier.registration_number %></dd>
+    <dt><strong>Endereço:</strong></dt>
+    <dd><%= @supplier.address %> - <%= @supplier.city %>/<%= @supplier.state %></dd>
+    <dt><strong>CEP:</strong></dt>
+    <dd><%= @supplier.postal_code %></dd>
+    <dt><strong>Email:</strong></dt>
+    <dd><%= @supplier.email %></dd>
+    <dt><strong>Telefone:</strong></dt>
+    <dd><%= @supplier.phone_number %></dd>
+  </dl>
+</div>
+<div>
+  <%= link_to 'Voltar', suppliers_path %>
+</div>
