@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Usuário vê detalhes de um galpão' do
+describe 'Usuário acessa detalhes de um galpão' do
   it 'e vê informações adicionais' do
     Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
                       address: 'Avenida do Aeroporto, 1000', postal_code: '15000-000',
