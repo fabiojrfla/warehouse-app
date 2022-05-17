@@ -19,7 +19,7 @@ class SuppliersController < ApplicationController
       flash[:success] = 'Fornecedor cadastrado com sucesso!'
       redirect_to @supplier
     else
-      flash[:error] = 'Something went wrong'
+      flash[:error] = 'Dados incompletos...'
       render 'new'
     end
   end
